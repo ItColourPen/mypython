@@ -27,6 +27,7 @@ def spyder(url):#对文章进行爬取
       c=soup.find_all('p')
       for each in c:
             print each.get_text()
-for each in ('lastestArticle','topArticle'):
-      for i in range(0,10):
-            spyder(get_url(i,each))
+if __name__ == '__main__':
+      for each in ('lastestArticle','topArticle'):
+            for i in range(0,10):
+                  spyder(get_url(i,each))
