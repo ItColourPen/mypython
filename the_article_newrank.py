@@ -1,9 +1,9 @@
-
+#对newrank下的公众号搜索的文章进行爬取，
 #coding:utf-8
 import requests
 import json
 from bs4 import BeautifulSoup
-def get_url(i,article):
+def get_url(i,article):#爬取得是热点文章还是近期文章，获取文章的网址
       url='http://www.newrank.cn/xdnphb/data/getAccountArticle'
       s=requests.session()
       data={'nonce':'7831bad1c',
@@ -20,7 +20,7 @@ def get_url(i,article):
       else:
             topArticle=value[article]
             return topArticle[i]['url']
-def spyder(url):
+def spyder(url):#对文章进行爬取
       headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'}
       source=requests.get(url,headers=headers)
       soup=BeautifulSoup(source.text)
