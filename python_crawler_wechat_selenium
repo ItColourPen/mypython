@@ -1,0 +1,38 @@
+#coding=utf-8
+#---- author = "zyh" ----#
+from selenium import webdriver
+import time
+from bs4 import BeautifulSoup
+def crawler_selenium():
+      driver=webdriver.Chrome('C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe')
+      driver.get('http://weixin.sogou.com/')
+      driver.find_element_by_id("upquery").send_keys(u"浙江旅游")
+      driver.find_element_by_class_name("swz2").click()
+      now_handle=driver.current_window_handle
+      driver.find_element_by_xpath('/html/body/div[2]/div[3]/div[1]/div[1]/div/div[2]/div/div[1]').click()
+      time.sleep(10)
+      all_handle=driver.window_handles
+      for handle in all_handle:
+            print handle
+            if handle!=now_handle:
+                  driver.switch_to_window(handle)
+                  print u"当前网页title"+driver.title
+      for i in range(10):
+            try:
+                  driver.find_elements_by_xpath("//h4[@class='weui_media_title']")[i].click()
+                  source=driver.page_source
+                  soup=BeautifulSoup(source)
+                  h=soup.find_all(span)
+                  #for each in h:
+                  #      print each
+                  #
+                  sleep(5)
+            except Exception:
+                  print u"抓取失败"
+                  pass 
+            i++    
+            driver.back()
+      driver.quit()
+if __name__ == '__main__':
+      crawler_selenium()
+      
