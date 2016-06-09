@@ -2,7 +2,7 @@
      学习历程：
         先是掌握了基本的python语法
             python爬虫记录:
-                1.requests<http://docs.python-requests.org/zh_CN/latest/>+re:
+                1.requests <http://docs.python-requests.org/zh_CN/latest/> +re: <https://www.chromium.org/>.
                     对html/css静态网站的抓取
                     对js生产表单的抓取(使用浏览器进行分析,json解析)
                     基本的正则表达式
